@@ -1,0 +1,18 @@
+{
+  "id": "fl1",
+  "name": "测试1",
+  "elements": [
+    {
+      "id": "start",
+      "stencil": "StartEvent"
+    },
+    {
+      "id": "task1",
+      "stencil": "UserTask"
+    },
+    {
+      "id": "fl",
+      "stencil": "SequenceFlow"
+    }
+  ]
+}

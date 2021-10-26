@@ -1,4 +1,4 @@
-package cn.pat.design;
+package cn.pat.model;
 
 /**
  * 结束事件

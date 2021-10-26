@@ -1,6 +1,7 @@
 {
   "id": "fl1",
   "name": "测试1",
+  "stencil": "Process",
   "elements": [
     {
       "id": "start",
@@ -12,7 +13,9 @@
     },
     {
       "id": "fl",
-      "stencil": "SequenceFlow"
+      "stencil": "SequenceFlow",
+      "sourceRef":"start",
+      "targetRef": "task1"
     }
   ]
 }

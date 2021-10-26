@@ -12,7 +12,16 @@
     <artifactId>flowless-common</artifactId>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.12.4</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>5.6.5</version>
+        </dependency>
     </dependencies>
 
 </project>

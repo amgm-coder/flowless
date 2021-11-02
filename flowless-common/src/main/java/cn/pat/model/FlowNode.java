@@ -1,5 +1,6 @@
 package cn.pat.model;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
@@ -9,9 +10,12 @@ import lombok.EqualsAndHashCode;
  * @date 2021/10/25
  */
 @EqualsAndHashCode
+@Data
 public abstract class FlowNode implements FlowElement{
     private String id;
     private String name;
+
+    private Object behavior;
 
     @Override
     public String getId() {

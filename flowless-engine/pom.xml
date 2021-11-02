@@ -19,9 +19,10 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.flowable</groupId>
-            <artifactId>flowable-engine</artifactId>
-            <version>6.6.0</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.5</version>
         </dependency>
+
     </dependencies>
 </project>

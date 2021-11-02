@@ -1,11 +1,15 @@
 package cn.pat.engine.impl.agenda;
 
-import cn.pat.entity.ProcessInstance;
+import cn.pat.engine.impl.util.CommandContext;
+import cn.pat.engine.runtime.ProcessInstance;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.LinkedList;
-import java.util.List;
 
+@Slf4j
 public class DefautFlowEngineAgenda implements FlowEngineAgenda{
+
+    protected CommandContext commandContext;
 
     protected LinkedList<Runnable> operations = new LinkedList<>();
 
@@ -27,21 +31,21 @@ public class DefautFlowEngineAgenda implements FlowEngineAgenda{
 
     @Override
     public void planContinueProcessOperation(ProcessInstance processInstance) {
-        ;
+        planOperation(new ContinueProcessOperation(this,processInstance),processInstance);
     }
 
     @Override
     public void planTakeOutgoingSequenceFlowsOperation(ProcessInstance processInstance, boolean evaluateConditions) {
-
+        planOperation(new TakeOutgoingSequenceFlowOperation(this,processInstance,evaluateConditions),processInstance);
     }
 
     @Override
-    public void planEndprocessInstanceOperation(ProcessInstance processInstance) {
-
+    public void planEndProcessInstanceOperation(ProcessInstance processInstance) {
+        log.debug("process :{} ended!!",processInstance);
     }
 
     @Override
-    public void planTriggerprocessInstanceOperation(ProcessInstance processInstance) {
+    public void planTriggerProcessInstanceOperation(ProcessInstance processInstance) {
 
     }
 

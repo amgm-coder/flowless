@@ -1,7 +1,7 @@
 package cn.pat.model.parser.parse;
 
+import cn.pat.model.BpmnProcess;
 import cn.pat.model.FlowElement;
-import cn.pat.model.Process;
 
 /**
  * 解析处理程序
@@ -16,7 +16,7 @@ public interface ParseHandler<T extends FlowElement> {
      * @param process 流程
      * @param flowElement 流元素
      */
-    void executeParse(Process process, T flowElement);
+    void executeParse(BpmnProcess process, T flowElement);
 
 
 

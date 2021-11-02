@@ -1,6 +1,6 @@
 package cn.pat.engine.impl.agenda;
 
-import cn.pat.entity.ProcessInstance;
+import cn.pat.engine.runtime.ProcessInstance;
 
 public interface FlowEngineAgenda {
     /**
@@ -23,9 +23,9 @@ public interface FlowEngineAgenda {
 
     void planTakeOutgoingSequenceFlowsOperation(ProcessInstance processInstance, boolean evaluateConditions);
 
-    void planEndprocessInstanceOperation(ProcessInstance processInstance);
+    void planEndProcessInstanceOperation(ProcessInstance processInstance);
 
-    void planTriggerprocessInstanceOperation(ProcessInstance processInstance);
+    void planTriggerProcessInstanceOperation(ProcessInstance processInstance);
 
     void planExecuteInactiveBehaviorsOperation();
 

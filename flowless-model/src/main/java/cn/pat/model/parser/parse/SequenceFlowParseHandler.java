@@ -1,8 +1,8 @@
 package cn.pat.model.parser.parse;
 
+import cn.pat.model.BpmnProcess;
 import cn.pat.model.FlowElement;
 import cn.pat.model.FlowNode;
-import cn.pat.model.Process;
 import cn.pat.model.SequenceFlow;
 
 /**
@@ -14,12 +14,22 @@ import cn.pat.model.SequenceFlow;
 public class SequenceFlowParseHandler implements ParseHandler<SequenceFlow>{
 
     @Override
-    public void executeParse(Process process, SequenceFlow flowElement) {
+    public void executeParse(BpmnProcess process, SequenceFlow flowElement) {
         String sourceRef = flowElement.getSourceRef();
         if (sourceRef != null) {
-            FlowElement source = process.findElementById(sourceRef);
+            FlowElement source = process.getElementById(sourceRef);
             if (source != null) {
                 flowElement.setSourceFlowElement((FlowNode) source);
+                ((FlowNode) source).addOutgoingSequenceFlow(flowElement);
+            }
+        }
+
+        String targetRef = flowElement.getTargetRef();
+        if (targetRef != null) {
+            FlowElement target = process.getElementById(targetRef);
+            if (target != null) {
+                flowElement.setTargetFlowElement((FlowNode) target);
+                ((FlowNode) target).addIncomingSequenceFlow(flowElement);
             }
         }
     }

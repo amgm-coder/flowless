@@ -1,7 +1,7 @@
 package cn.pat.model.parser;
 
+import cn.pat.model.BpmnProcess;
 import cn.pat.model.FlowElement;
-import cn.pat.model.Process;
 import cn.pat.model.exception.RequiredPropertyMissingException;
 import cn.pat.model.parser.parse.ParseHandler;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -19,18 +19,18 @@ public class JsonProcessParser {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @SneakyThrows
-    public String into(Process process) {
+    public String into(BpmnProcess process) {
         return objectMapper.writeValueAsString(process);
     }
 
     @SneakyThrows
     @SuppressWarnings({"rawtypes","unchecked"})
-    public Process from(String json) {
+    public BpmnProcess from(String json) {
         JsonNode root = objectMapper.readTree(json);
         if (root.isMissingNode() || root.isEmpty()) {
             return null;
         }
-        Process process = readBaseProcess(root);
+        BpmnProcess process = readBaseProcess(root);
         JsonNode elements = root.path("elements");
         if (elements.isArray()) {
             ArrayNode arrayNode = (ArrayNode) elements;
@@ -63,9 +63,9 @@ public class JsonProcessParser {
         return elem;
     }
 
-    private Process readBaseProcess(JsonNode root) {
+    private BpmnProcess readBaseProcess(JsonNode root) {
         String id = checkTextNonEmpty(root, "id");
-        Process process = new Process();
+        BpmnProcess process = new BpmnProcess();
         process.setId(id);
         process.setName(root.path("name").asText());
         return process;

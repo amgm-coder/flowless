@@ -14,7 +14,7 @@
     {
       "id": "fl",
       "stencil": "SequenceFlow",
-      "sourceRef":"start",
+      "sourceRef": "start",
       "targetRef": "task1"
     }
   ]

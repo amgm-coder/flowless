@@ -4,7 +4,7 @@ import cn.pat.engine.impl.util.CommandContext;
 import cn.pat.engine.runtime.ProcessInstance;
 import cn.pat.model.FlowElement;
 
-public abstract class AbstractOperation implements Runnable{
+public abstract class AbstractOperation implements Runnable {
 
     protected FlowEngineAgenda agenda;
 

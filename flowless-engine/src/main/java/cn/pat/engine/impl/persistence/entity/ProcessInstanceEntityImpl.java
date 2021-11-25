@@ -11,7 +11,9 @@ import java.util.Date;
 public class ProcessInstanceEntityImpl implements ProcessInstance {
 
     protected String id;
-    /** The tenant identifier (if any) */
+    /**
+     * The tenant identifier (if any)
+     */
     protected String tenantId = ProcessEngineConfiguration.NO_TENANT_ID;
 
     protected String name;
@@ -25,12 +27,10 @@ public class ProcessInstanceEntityImpl implements ProcessInstance {
     protected Date endTime;
 
 
-
     //    -------------------------
 
     /**
      * Persisted reference to the processDefinition.
-     *
      */
     protected String processDefinitionId;
 
@@ -46,7 +46,6 @@ public class ProcessInstanceEntityImpl implements ProcessInstance {
 
     /**
      * Persisted reference to the current position in the diagram within the definition.
-
      */
     protected String activityId;
 
@@ -66,7 +65,7 @@ public class ProcessInstanceEntityImpl implements ProcessInstance {
         this.currentFlowElement = currentFlowElement;
         if (currentFlowElement != null) {
             activityId = currentFlowElement.getId();
-        }else {
+        } else {
             activityId = null;
         }
     }

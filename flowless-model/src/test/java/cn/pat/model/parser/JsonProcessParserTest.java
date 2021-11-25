@@ -2,7 +2,10 @@ package cn.pat.model.parser;
 
 import cn.hutool.core.io.resource.ResourceUtil;
 import cn.pat.model.BpmnProcess;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 class JsonProcessParserTest {
@@ -25,7 +28,7 @@ class JsonProcessParserTest {
 
         BpmnProcess p2 = jsonProcessParser.from(json);
 
-        Assertions.assertEquals(p1,p2);
+        Assertions.assertEquals(p1, p2);
     }
 
     @Test

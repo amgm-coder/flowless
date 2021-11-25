@@ -6,5 +6,5 @@ package cn.pat.model;
  * @author pat
  * @date 2021/10/25
  */
-public class EndEvent extends FlowNode{
+public class EndEvent extends FlowNode {
 }

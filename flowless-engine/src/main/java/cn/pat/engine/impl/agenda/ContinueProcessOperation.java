@@ -8,7 +8,7 @@ import cn.pat.model.SequenceFlow;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ContinueProcessOperation extends AbstractOperation{
+public class ContinueProcessOperation extends AbstractOperation {
 
     public ContinueProcessOperation(FlowEngineAgenda agenda, ProcessInstance execution) {
         super(agenda, execution);
@@ -30,28 +30,28 @@ public class ContinueProcessOperation extends AbstractOperation{
         execution.setCurrentFlowElement(targetFlowElement);
         if (targetFlowElement instanceof FlowNode) {
             continueThroughFlowNode(targetFlowElement);
-        }else {
+        } else {
             agenda.planContinueProcessOperation(execution);
         }
     }
 
     protected void continueThroughFlowNode(FlowNode flowNode) {
-        log.debug("continue through flow node:{}",flowNode);
+        log.debug("continue through flow node:{}", flowNode);
         ActivityBehavior behavior = (ActivityBehavior) flowNode.getBehavior();
         if (behavior != null) {
             executeActivityBehavior(behavior, flowNode);
-        }else {
-            agenda.planTakeOutgoingSequenceFlowsOperation(execution,true);
+        } else {
+            agenda.planTakeOutgoingSequenceFlowsOperation(execution, true);
         }
     }
 
     protected void executeActivityBehavior(ActivityBehavior behavior, FlowNode flowNode) {
         try {
-            log.debug("execute ActivityBehavior:{}",behavior);
+            log.debug("execute ActivityBehavior:{}", behavior);
             behavior.execute(execution);
         } catch (Exception e) {
 
-            log.warn("execute ActivityBehavior:{}",behavior,e);
+            log.warn("execute ActivityBehavior:{}", behavior, e);
             throw e;
         }
     }

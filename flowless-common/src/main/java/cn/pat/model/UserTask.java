@@ -6,6 +6,6 @@ package cn.pat.model;
  * @author pat
  * @date 2021/10/25
  */
-public class UserTask extends FlowNode{
+public class UserTask extends FlowNode {
 
 }

@@ -24,7 +24,7 @@ public class JsonProcessParser {
     }
 
     @SneakyThrows
-    @SuppressWarnings({"rawtypes","unchecked"})
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public BpmnProcess from(String json) {
         JsonNode root = objectMapper.readTree(json);
         if (root.isMissingNode() || root.isEmpty()) {
@@ -32,22 +32,23 @@ public class JsonProcessParser {
         }
         BpmnProcess process = readBaseProcess(root);
         JsonNode elements = root.path("elements");
+
         if (elements.isArray()) {
             ArrayNode arrayNode = (ArrayNode) elements;
             for (JsonNode child : arrayNode) {
                 if (child.isObject()) {
                     FlowElement flowElement = readChildElement(child);
                     if (flowElement != null) {
-
                         process.addElement(flowElement);
                     }
                 }
             }
         }
+
         for (FlowElement flowElement : process.getElements()) {
             ParseHandler handler = ParerHandlers.getHandler(flowElement.getClass());
             if (handler != null) {
-                handler.executeParse(process,flowElement);
+                handler.executeParse(process, flowElement);
             }
         }
         return process;

@@ -19,5 +19,4 @@ public class UserTaskActivityBehavior extends ActivityBehavior {
         performOutgoingBehavior(processInstance);
     }
 
-
 }

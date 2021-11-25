@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.LinkedList;
 
 @Slf4j
-public class DefautFlowEngineAgenda implements FlowEngineAgenda{
+public class DefaultFlowEngineAgenda implements FlowEngineAgenda {
 
     protected CommandContext commandContext;
 
@@ -15,7 +15,7 @@ public class DefautFlowEngineAgenda implements FlowEngineAgenda{
 
     @Override
     public boolean isEmpty() {
-        return  operations.isEmpty();
+        return operations.isEmpty();
     }
 
     @Override
@@ -31,17 +31,17 @@ public class DefautFlowEngineAgenda implements FlowEngineAgenda{
 
     @Override
     public void planContinueProcessOperation(ProcessInstance processInstance) {
-        planOperation(new ContinueProcessOperation(this,processInstance),processInstance);
+        planOperation(new ContinueProcessOperation(this, processInstance), processInstance);
     }
 
     @Override
     public void planTakeOutgoingSequenceFlowsOperation(ProcessInstance processInstance, boolean evaluateConditions) {
-        planOperation(new TakeOutgoingSequenceFlowOperation(this,processInstance,evaluateConditions),processInstance);
+        planOperation(new TakeOutgoingSequenceFlowOperation(this, processInstance, evaluateConditions), processInstance);
     }
 
     @Override
     public void planEndProcessInstanceOperation(ProcessInstance processInstance) {
-        log.debug("process :{} ended!!",processInstance);
+        log.debug("process :{} ended!!", processInstance);
     }
 
     @Override

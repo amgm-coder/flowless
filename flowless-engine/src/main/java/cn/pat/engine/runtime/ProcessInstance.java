@@ -4,8 +4,6 @@ import cn.pat.model.FlowElement;
 
 public interface ProcessInstance {
 
-
-
     FlowElement getCurrentFlowElement();
 
     String getCurrentActivityId();

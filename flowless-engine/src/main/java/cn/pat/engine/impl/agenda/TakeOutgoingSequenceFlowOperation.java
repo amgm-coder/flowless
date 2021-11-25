@@ -7,16 +7,15 @@ import cn.pat.model.SequenceFlow;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class TakeOutgoingSequenceFlowOperation extends AbstractOperation{
+public class TakeOutgoingSequenceFlowOperation extends AbstractOperation {
 
-    public TakeOutgoingSequenceFlowOperation(FlowEngineAgenda agenda, ProcessInstance execution, boolean evaluateConditions) {
+    public TakeOutgoingSequenceFlowOperation(FlowEngineAgenda agenda, ProcessInstance execution,
+                                             boolean evaluateConditions) {
         super(agenda, execution);
         this.evaluateConditions = evaluateConditions;
     }
 
     protected boolean evaluateConditions;
-
-
 
     @Override
     public void run() {
@@ -41,10 +40,10 @@ public class TakeOutgoingSequenceFlowOperation extends AbstractOperation{
         log.debug("Leaving flow node {} with id '{}' by following it's {} outgoing sequenceflow",
                 flowNode.getClass(), flowNode.getId(), flowNode.getOutgoingFlows().size());
 
-        if (flowNode.getOutgoingFlows()==null ||flowNode.getOutgoingFlows().size() == 0) {
+        if (flowNode.getOutgoingFlows() == null || flowNode.getOutgoingFlows().size() == 0) {
             log.debug("No outgoing sequence flow found for flow node '{}'.", flowNode.getId());
             agenda.planEndProcessInstanceOperation(execution);
-        }else if (flowNode.getOutgoingFlows().size() == 1) {
+        } else if (flowNode.getOutgoingFlows().size() == 1) {
             SequenceFlow sequenceFlow = flowNode.getOutgoingFlows().get(0);
             execution.setCurrentFlowElement(sequenceFlow);
             agenda.planContinueProcessOperation(execution);

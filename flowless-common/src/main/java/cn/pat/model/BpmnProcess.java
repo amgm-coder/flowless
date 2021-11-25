@@ -2,7 +2,10 @@ package cn.pat.model;
 
 import lombok.EqualsAndHashCode;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -12,23 +15,21 @@ import java.util.stream.Collectors;
  * @author pat
  * @date 2021/10/25
  */
-@EqualsAndHashCode(callSuper = true,exclude = "elementMap")
-public class BpmnProcess extends FlowNode{
+@EqualsAndHashCode(callSuper = true, exclude = "elementMap")
+public class BpmnProcess extends FlowNode {
 
-
-    private final Map<String,FlowElement> elementMap = new HashMap<>();
-
+    private final Map<String, FlowElement> elementMap = new HashMap<>();
 
     public void addElement(FlowElement flowElement) {
         elementMap.put(flowElement.getId(), flowElement);
     }
 
-    public FlowElement getElementById(String id){
+    public FlowElement getElementById(String id) {
         return elementMap.get(id);
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends FlowElement> List<T> findElementsOfType(Class<T> type){
+    public <T extends FlowElement> List<T> findElementsOfType(Class<T> type) {
         return (List<T>) elementMap.values().stream().filter(type::isInstance).collect(Collectors.toList());
     }
 

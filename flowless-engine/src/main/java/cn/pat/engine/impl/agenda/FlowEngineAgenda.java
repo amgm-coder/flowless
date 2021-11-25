@@ -12,7 +12,7 @@ public interface FlowEngineAgenda {
      * Get next operation from agenda and remove operation from the queue.
      *
      * @return next operation from the queue
-     * @throws {@link  todo} in the case when agenda is empty
+     * @throws TODO in the case when agenda is empty
      */
     Runnable getNextOperation();
 

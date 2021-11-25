@@ -10,7 +10,7 @@ import lombok.Data;
  * @date 2021/10/25
  */
 @Data
-public class SequenceFlow implements FlowElement{
+public class SequenceFlow implements FlowElement {
 
     private String id;
     private String name;
@@ -19,6 +19,7 @@ public class SequenceFlow implements FlowElement{
      * 源节点id
      */
     private String sourceRef;
+
     /**
      * 目标节点id
      */
@@ -29,6 +30,7 @@ public class SequenceFlow implements FlowElement{
      */
     @JsonIgnore
     private FlowNode sourceFlowElement;
+
     /**
      * 目标
      */

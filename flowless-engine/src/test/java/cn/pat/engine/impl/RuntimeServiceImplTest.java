@@ -6,8 +6,6 @@ import cn.pat.model.parser.JsonProcessParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class RuntimeServiceImplTest {
     private String demoJson;
 
@@ -18,11 +16,11 @@ class RuntimeServiceImplTest {
 
     @Test
     void startProcessInstance() {
-        RuntimeServiceImpl runtimeService = new RuntimeServiceImpl();
 
         JsonProcessParser jsonProcessParser = new JsonProcessParser();
         BpmnProcess bpmnProcess = jsonProcessParser.from(demoJson);
 
+        RuntimeServiceImpl runtimeService = new RuntimeServiceImpl();
         runtimeService.startProcessInstance(bpmnProcess);
     }
 }

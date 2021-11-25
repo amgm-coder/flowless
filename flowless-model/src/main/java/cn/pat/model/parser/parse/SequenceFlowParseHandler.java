@@ -11,7 +11,7 @@ import cn.pat.model.SequenceFlow;
  * @author pat
  * @date 2021/10/26
  */
-public class SequenceFlowParseHandler implements ParseHandler<SequenceFlow>{
+public class SequenceFlowParseHandler implements ParseHandler<SequenceFlow> {
 
     @Override
     public void executeParse(BpmnProcess process, SequenceFlow flowElement) {
